@@ -1,5 +1,10 @@
 # RSpec Variants
 
+[![Gem Version](https://badge.fury.io/rb/rspec_variants.svg)](http://badge.fury.io/rb/rspec_variants)
+[![License](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jeffnyman/rspec_variants/blob/master/LICENSE.md)
+
+[![Dependency Status](https://gemnasium.com/jeffnyman/rspec_variants.png)](https://gemnasium.com/jeffnyman/rspec_variants)
+
 RSpec Variants adds an expressive layer to RSpec by allowing for test syntax based on explicit data conditions and test conditions, including a tabular syntax for the concise specification of related data.
 
 ## Installation
@@ -30,6 +35,7 @@ All you have to do is require `rspec_variants` from your `spec_helper` file. The
 
 An example of using the data and test conditions:
 
+```ruby
     context 'Rocky Planets' do
       data_condition(:planet, :weight) do
         [
@@ -45,11 +51,13 @@ An example of using the data and test conditions:
           expect(on(Planet).send("#{planet}").value).to eq(weight)
         end
     end
+```
 
 Here the `planet` and the `weight` values in the expect statement in the `test_condition` are referring to those same elements specified in the `data_condition`. In this case, RSpec will execute the test condition block for each one of the elements in the data condition block.
 
 You can also use a tabular format for the above example, which would look like this:
 
+```ruby
     context 'Rocky Planets' do
       data_condition(:planet, :weight) do
         'mercury' | '75.6'
@@ -64,6 +72,9 @@ You can also use a tabular format for the above example, which would look like t
         end
       end
     end
+```
+
+You can also check out the [variants_spec](https://github.com/jeffnyman/rspec_variants/blob/master/spec/rspec/variants_spec.rb) unit test for more examples.
 
 ## Development
 
